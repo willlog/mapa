@@ -23,8 +23,8 @@ export class HomePage {
   }
 
   drawMap(): void {
-    this.map = Leaflet.map('map').setView([-1.2490800, -78.6167500], 13);
-    Leaflet.tileLayer('assets/mapa/{z}/{x}/{y}.png', {
+    this.map = Leaflet.map('map').setView([-1.2490800, -78.6167500], 2);
+    Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'AMW',
       maxZoom: 16
     }).addTo(this.map);
@@ -81,10 +81,13 @@ export class HomePage {
 
       var tempMarker = this;
   
-      var marca = document.getElementsByClassName("marker-delete-button:visible");
-      /*marca.click=function () {
+      var marca = document.getElementsByClassName("marker-delete-button");
+
+      for(var x = 0; x < marca.length; x++) {
+        marca[x].addEventListener("click",function(){
           map.removeLayer(tempMarker);
-      };*/
+        },false);
+      }
     }
 
     map.on('click', addMarker);
