@@ -4,16 +4,54 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-    <ion-grid>
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar class="avatar" item-start>
+        <button (click)="getPicture()" ion-button color="dark" round><ion-icon ios="ios-camera" md="md-camera"></ion-icon></button>       
+      </ion-avatar>
+      <ion-grid>
         <ion-row>
-          <ion-col col-12>
-              
+          <ion-col class="iconCenterLatLng" col-2>
+              <ion-icon ios="ios-compass" md="md-compass"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+              <p> <b>Lat:</b> {{point._latlng.lat}}</p>
+              <p> <b>Lng:</b> {{point._latlng.lng}}</p>
           </ion-col>
         </ion-row>
       </ion-grid>
-    
       
-
+      
+    </ion-item>
+  
+    <img [src]="image" *ngIf="image" />
+  
+    <ion-card-content>
+      
+    </ion-card-content>
+  
+    <ion-row>
+      <ion-col>
+        <button (click)="cancelNavPage()" ion-button icon-left clear small>
+          <ion-icon name="ios-return-left"></ion-icon>
+          <div>Cancelar</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button [disabled]="enableButton" ion-button icon-left clear small>
+          <ion-icon name="md-filing"></ion-icon>
+          <div>Guardar</div>
+        </button>
+      </ion-col>
+      <ion-col>
+          <button (click)="presentConfirm() " ion-button icon-left clear small>
+            <ion-icon name="ios-trash"></ion-icon>
+          </button>
+      </ion-col>
+    </ion-row>
+  
+  </ion-card>
 </ion-content>
